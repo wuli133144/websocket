@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>websocket在线测试</title>
+    <meta content="WebSocket 在线测试 工具 物联网" name="description">
+    <meta content="WebSocket 在线测试 工具 物联网" name="keywords">
+    <link rel="stylesheet" href="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/index.css">
+    <link rel="stylesheet" href="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/bootstrap.css">
+    <meta charset="utf-8">
+<script src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/hm.js"></script><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4f13d7149f2b8153a8f0b5f4a0f72f7c";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body>
+    <div class="page-header">
+        <h1 style="margin-top:-20px;margin-left:20px;">WebSocket 在线测试 v13 <small>by 煌</small></h1>
+        <div style="position:absolute;top:5px;left:500px;"><a href="http://www.blue-zero.com/WeBsocket/client.html" target="_blank" title="websocket与socket程序工具"><img style="margin-left:5px;" hight="46" src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/Server.png" width="46"><div style="font-weight:900;">转发场景</div></a></div>
+        <div style="position:absolute;top:5px;left:585px;"><a href="http://www.blue-zero.com/sf/Socket_WebSocket%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%A8%8B%E5%BA%8Fv120.zip" target="_blank"><img style="margin-left:42px;" hight="46" src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/Client.png" width="46"><div style="font-weight:900;">WebSocket客户端</div></a></div>
+        <div style="position:absolute;top:5px;left:735px;"><a href="http://www.blue-zero.com/sf/WebSocket%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%A8%8B%E5%BA%8Fv160.zip" target="_blank"><img style="margin-left:32px;" hight="46" src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/Wsserver.png" width="46"><img src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/new.gif" style="margin-top:-25px;" height="24"><div style="font-weight:900;">该测试平台服务端</div></a></div>
+        <div style="position:absolute;top:5px;left:870px;"><a href="http://www.blue-zero.com/chat/" target="_blank"><img style="margin-left:28px;" hight="46" src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/chat.png" width="46"><img src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/new.gif" style="margin-top:-25px;" height="24"><div style="font-weight:900;">点击进入聊天室</div></a></div>
+        <div style="position:absolute;top:5px;left:990px;"><a href="http://www.blue-zero.com/sf/WebSocket%E5%8E%8B%E5%8A%9B%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95v106.zip" target="_blank"><img style="margin-left:34px;" hight="46" src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/tool1.png" width="46"><img src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/new.gif" style="margin-top:-25px;" height="24"><div style="font-weight:900;">并发压力测试工具</div></a></div>
+        <div style="position:absolute;top:5px;left:1120px;"><a href="http://www.bluelin.cn/" target="_blank"><img style="margin-left:28px;" hight="46" src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/lot.png" width="46"><div style="font-weight:900;">物联网测控平台</div></a></div>
+    </div>
+    <div>
+        <div class="zone_conn">
+            <input class="form-control" style="float:left;" id="inp_url" value="ws://172.16.103.125:9000" placeholder="连接的地址" type="text">
+            <button type="button" id="btn_conn" class="btn btn-primary" style="float:left;margin-left:10px;margin-right:10px;" onclick="fun_initWebSocket();" disabled="disabled">连接</button>
+            <button type="button" id="btn_close" class="btn btn-danger" style="float:left;" onclick="fun_close();">断开</button>
+        </div>
+        <div class="clearboth">
+            1、连接格式为 ws://IP/域名:端口（示例ws://118.25.40.163:8088）<br>
+            2、对于<span style="color:red">内网</span>的测试环境，只需填入服务端的<span style="color:red">内网IP</span>和端口<br>
+            3、可连接我上面提供的服务端ws地址来测试您<span style="color:red">自己的客户端</span>
+        </div>
+        <div class="zone_send">
+            <a id="emoji" style="position:relative;left:374px;bottom:5px;cursor:pointer;" data-toggle="popover" title="" data-original-title="表情"><img style="outline-width:40px;" src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/huanglianwx_thumb.gif">表情</a>
+            <textarea id="inp_send" class="form-control" style="height:100px;" placeholder="发送的内容"></textarea>
+            <br>
+            <button type="button" id="btn_send" class="btn btn-info" onclick="fun_sendto();">发送（ctrl+回车）</button>
+            <div style="margin-top:10px;color:red;line-height:30px;">1、平台兼容IE6及以上，服务端基于C#.NET完成端口的socket监听</div>
+            <div style="color:red;line-height:30px;">2、服务端未使用任何框架，原生方式实现，更清楚WebSocket底层流程</div>
+            <div style="color:red;line-height:30px;">3、服务端支持多客户端数据收发</div>
+            <div style="color:red;line-height:30px;">4、需要完整的【客户端/服务器】源码请咨询作者</div>
+            <div data-toggle="modal" data-target="#myModal" style="color:blue;line-height:30px;font-size:16px;cursor:pointer;text-decoration:underline;"><img src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/wexin.png" style="margin-right:10px;" height="30">联系作者</div>
+        </div>
+    </div>
+    <div style="position:absolute;top:100px;left:470px;">
+        <div id="div_msgzone" class="panel panel-default">
+            <div class="panel-heading">消息窗口</div>
+            <div id="div_msg" class="panel-body" style="width: 1420px; height: 773px;"><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 16:50:10</div>等待服务器握手包...</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 16:50:10</div>收到服务器握手包.</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 16:50:10</div>连接已建立，正在等待数据...</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 16:50:10</div><b>服务端主动向你推送：</b> <span style="font-size:20px;">点击进入<a style="font-weight:900;font-size:16px;" href="http://www.blue-zero.com/chat/" target="_blank">【聊天室】<img src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/wg_thumb.gif"></a>，使用websocket开发，支持一对一私聊和一对多公聊</span></div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 16:50:10</div><b style="color:#ff9900;">作者(在线)</b>：halo~，websocket开发上有什么疑问可以加我微信</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 16:50:19</div>fasdfasdfAZSf</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 16:50:19</div><b>从服务端返回你发的消息：</b>fasdfasdfAZSf</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 16:51:3</div>和服务器断开连接！</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 16:51:4</div>等待服务器握手包...</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 16:51:4</div>收到服务器握手包.</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 16:51:4</div>连接已建立，正在等待数据...</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 17:34:31</div>和服务器断开连接！</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 17:34:32</div>等待服务器握手包...</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 17:34:32</div>收到服务器握手包.</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 17:34:32</div>连接已建立，正在等待数据...</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 17:34:37</div>fasdfasdf</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 17:34:37</div>fasdfasdf</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 17:34:43</div>fasdfasdfasd</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 17:34:43</div>fasdfasdfasd</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 17:34:47</div>fasdfasdfasf</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 17:34:47</div>fasdfasdfasf</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 17:34:50</div>fasdfasdfasf</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 17:34:50</div>fasdfasdfasf</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 17:34:53</div>fasdfasdfasd</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 17:34:53</div>fasdfasdfasd</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 17:34:55</div>fasdfasdfsafdasfasd</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 17:34:55</div>fasdfasdfsafdasfasd</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 17:35:0</div>fasdfasdfasf</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 17:35:0</div>fasdfasdfasf</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 17:35:2</div>fasdfasdfas</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 17:35:2</div>fasdfasdfas</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 17:35:4</div>fasdfasdfasd</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 17:35:4</div>fasdfasdfasd</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 17:35:5</div>fasdfasdf</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 17:35:5</div>fasdfasdf</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:green">你 17:35:7</div>fasdfas</div><div style="margin-bottom:10px;position:relative;left:0px;"><div style="color:blue">服务器 17:35:7</div>fasdfas</div></div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="myModalLabel">感谢捐赠</h4>
+                </div>
+                <div class="modal-body" style="text-align:center;">
+                    感谢您对作者的捐赠，您的付出都是对作者更好的呈现一些websocket体验的支持。
+                    <br>如在开发websocket上有何疑问不解的地方或需要<span style="color:red">广告投放</span>，也可以加作者为好友。<div style="color:red;text-align:center;margin-top:10px;margin-bottom:10px;">互相交流、知无不言</div>
+                 <div style="color:green;font-weight:900;margin-top:5px;margin-bottom:5px;margin-left:10px;"><img src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/wexin.png" height="30">微信：yaohuang46</div>
+                 <div style="color:green;font-weight:900;margin-bottom:5px;"><img src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/qq.png" height="30">QQ ：114687576</div>
+                    <img src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/weixin.png" height="200">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/jquery-1.js"></script>
+    <script type="text/javascript" src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/bootstrap.js"></script>
+    <script type="text/javascript" src="websocket%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95_files/index.js"></script>
+
+
+</body></html>
