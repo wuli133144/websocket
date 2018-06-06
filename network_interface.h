@@ -3,6 +3,7 @@
 
 #include "websocket_handler.h"
 #include "ConfigFileReader.h"
+#include "jsonxx.h"
 
 #define PORT 9000
 #define TIMEWAIT 100

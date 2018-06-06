@@ -27,7 +27,9 @@
                   'websocket_request.h',
                   'websocket_request.cpp',
                   'websocket_respond.h',
-                  'websocket_respond.cpp'
+                  'websocket_respond.cpp',
+                  'jsonxx.h',
+                  'jsonxx.cpp'
                   
             ],
             

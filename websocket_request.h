@@ -12,6 +12,7 @@ public:
 	int fetch_websocket_info(char *msg);
 	void print();
 	void reset();
+	char *getcontent(){return payload_;}
 
 private:
 	int fetch_fin(char *msg, int &pos);
@@ -20,6 +21,7 @@ private:
 	int fetch_masking_key(char *msg, int &pos);
 	int fetch_payload_length(char *msg, int &pos);
 	int fetch_payload(char *msg, int &pos);
+
 private:
 	uint8_t fin_;
 	uint8_t opcode_;

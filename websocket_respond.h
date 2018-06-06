@@ -5,6 +5,7 @@ class Websocket_Respond {
 public:
 	Websocket_Respond();
 	~Websocket_Respond();
+	
 };
 
 #endif

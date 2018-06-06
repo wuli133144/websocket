@@ -4,11 +4,17 @@
 #include <arpa/inet.h>
 #include <iostream>
 #include <map>
+#include <string>
+	
 #include <sstream>
 #include "base64.h"
 #include "sha1.h"
 #include "debug_log.h"
 #include "websocket_request.h"
+#include "jsonxx.h"
+#include <sstream>
+
+using namespace jsonxx;
 
 #define MAGIC_KEY "258EAFA5-E914-47DA-95CA-C5AB0DC85B11"
 

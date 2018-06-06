@@ -33,6 +33,11 @@ int Network_Interface::init(){
 		DEBUG_LOG("error create socket fd!");
 		return -1;
 	}
+    int optval = 1;  
+    if (setsockopt(listenfd_, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(optval)) < 0) {  
+    
+      exit(-1);  
+    }   
 	struct sockaddr_in server_addr;
 	memset(&server_addr, 0, sizeof(sockaddr_in));
 	server_addr.sin_family = AF_INET;
@@ -43,6 +48,7 @@ int Network_Interface::init(){
 		DEBUG_LOG("bind socket failed!");
 		return -1;
 	}
+	//setsockopt(listenfd_,SOL_SOCKET ,SO_REUSEADDR,(const char*)&bReuseaddr,sizeof(BOOL)); 
 	if(-1 == listen(listenfd_, 5)){
 		DEBUG_LOG("listen socket failed!");
 		return -1;
@@ -133,8 +139,6 @@ void Network_Interface::ctl_event1(int fd,int flags)
    epoll_ctl(epollfd_, EPOLL_CTL_MOD, fd, &ev);
    
 }
-
-
 
 
 void Network_Interface::run(){

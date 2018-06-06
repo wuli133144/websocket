@@ -19,13 +19,27 @@ int Websocket_Handler::process(){
 	}
 	request_->fetch_websocket_info(buff_);
 	request_->print();
+	
 	/*char buf[BUFFLEN];
     memset(buf,0,sizeof(buf));
 	parse_str(buf);*/
+
+	//jsonxx::Array jsonarr;
+	std::istringstream input(request_->getcontent());
+	jsonxx::Object o;
+	//o.parse(input);
+  
+    if(o.parse(input)){//if receive message is json format,
+	      std::string obj=o.json();
+          DEBUG_LOG("json :%s",obj.c_str());
+    }else{
+		    DEBUG_LOG("contents :%s",request_->getcontent());
+	}
     send_data(buff_);//return client data//this data is valid
 	
 	memset(buff_, 0, sizeof(buff_));
 	return 0;
+	
 }
 
 int Websocket_Handler::handshark(){

@@ -33,7 +33,7 @@ void Websocket_Request::print(){
 				"PAYLOAD: %s",
 				fin_, opcode_, mask_, payload_length_, payload_);
 
-	reset();
+	//reset();
 }
 
 void Websocket_Request::reset(){
