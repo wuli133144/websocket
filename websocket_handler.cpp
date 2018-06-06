@@ -31,6 +31,9 @@ int Websocket_Handler::process(){
   
     if(o.parse(input)){//if receive message is json format,
 	      std::string obj=o.json();
+		  if(o.has<std::string>(std::string("name"))){  	
+            DEBUG_LOG("json name :%s",o.get<std::string>("name").c_str());
+		  }
           DEBUG_LOG("json :%s",obj.c_str());
     }else{
 		    DEBUG_LOG("contents :%s",request_->getcontent());
